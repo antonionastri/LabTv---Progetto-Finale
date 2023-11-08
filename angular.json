@@ -25,7 +25,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              {
+                "input": "src/viva-dark.css",
+                "bundleName": "viva-dark",
+                "inject": false
+              },
+              {
+                "input": "src/viva-light.css",
+                "bundleName": "viva-light",
+                "inject": false
+              }
             ],
             "scripts": []
           },
@@ -94,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "96b46a66-6544-40b1-867c-bd29727c7490"
   }
 }

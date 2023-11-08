@@ -1,0 +1,45 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Result, Root } from '../model/film';
+import { Observable } from 'rxjs';
+import { Detail, Root2 } from '../model/film-detail';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class FilmService {
+  private baseUrl =
+    'https://api.themoviedb.org/3/movie/popular?language=it-IT&page=';
+
+  private alternativeUrl = 'https://api.themoviedb.org/3/movie/';
+
+  constructor(private http: HttpClient) {}
+
+  private HttpOptions = {
+    headers: new HttpHeaders({
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNjRhZjczZTNlZTBmZjUyNTQzYTViMzhlMDdmZTA3MSIsInN1YiI6IjY1MmZiYzYwYTgwMjM2MDExYWM4MWRjYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eCyKL_vKchSzvqGerSsvor3uR_RZF_8ea3n7hy6Amkw',
+    }),
+  };
+
+  getFilm(page: number): Observable<Root> {
+    const word = this.baseUrl + page;
+    return this.http.get<Root>(word, this.HttpOptions);
+  }
+
+  public searchFilm(): Observable<Root[]> {
+    const word = this.baseUrl;
+    return this.http.get<Root[]>(word, this.HttpOptions);
+  }
+
+  getById(id: string): Observable<Root2> {
+    const url = `${this.alternativeUrl}${id}?language=it-IT`;
+
+    return this.http.get<Root2>(url, this.HttpOptions);
+  }
+
+  getByKeyword(query: any) {
+    const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=it-IT`;
+    return this.http.get<any>(url, this.HttpOptions);
+  }
+}

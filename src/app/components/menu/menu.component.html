@@ -1,0 +1,83 @@
+<div style="width: 100%">
+  <div
+    class="card"
+    style="position: fixed; z-index: 5; width: 90%; left: 50%; translate: -50%"
+  >
+    <p-megaMenu
+      *ngIf="authService.isUserLogged"
+      [model]="items"
+      styleClass="flex"
+    >
+      <div
+        *ngIf="authService.isUserLogged"
+        class="row justify-content-center"
+        style="float: right"
+      >
+        <p style="font-size: 12px">
+          Benvenuto {{ authService.getLoggedUser()?.user?.nome }}
+          <i
+            class="pi pi-sign-out"
+            (click)="due()"
+            style="
+              font-size: 12px;
+              color: grey;
+              margin-left: 5px;
+              cursor: pointer;
+            "
+          ></i>
+        </p>
+      </div>
+
+      <p-autoComplete
+        [(ngModel)]="selectedItem"
+        [suggestions]="results"
+        (completeMethod)="search($event)"
+        field="title"
+        (onSelect)="selectID($event)"
+        [delay]="500"
+        [minLength]="3"
+        (onBlur)="onBlur($event)"
+        >
+    
+        <ng-template let-film pTemplate="item">
+            <div class="flex align-items-center gap-2">
+                <img *ngIf="film.poster_path" src="{{ 'https://image.tmdb.org/t/p/w500/' + film.poster_path}}" style="width: 18px"/>
+                <div>{{ film.title }}</div>
+            </div>
+        </ng-template>
+
+    </p-autoComplete>
+
+      <div style="float: right; margin-right: 15px; padding-top: 4px">
+        <fa-icon
+          [icon]="faMoon"
+          (click)="cambia('viva-dark')"
+          style="font-size: 1.4rem; margin: 8px; cursor: pointer"
+        ></fa-icon>
+        <fa-icon
+          [icon]="faSun"
+          (click)="cambia('viva-light')"
+          style="font-size: 1.4rem; cursor: pointer; margin-left: 5px"
+        ></fa-icon>
+      </div>
+    </p-megaMenu>
+    <p-megaMenu
+      *ngIf="!authService.isUserLogged"
+      [model]="items2"
+      styleClass="flex"
+    >
+      <div style="float: right">
+        <fa-icon
+          [icon]="faMoon"
+          (click)="cambia('viva-dark')"
+          style="font-size: 1.4rem; margin: 8px; cursor: pointer"
+        ></fa-icon>
+        <fa-icon
+          [icon]="faSun"
+          (click)="cambia('viva-light')"
+          style="font-size: 1.4rem; cursor: pointer; margin-left: 5px"
+        ></fa-icon>
+      </div>
+    </p-megaMenu>
+  </div>
+</div>
