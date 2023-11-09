@@ -14,6 +14,8 @@ import { MenuModule } from 'primeng/menu';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
+import { DialogModule } from 'primeng/dialog';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,7 +64,10 @@ import { PipePipe } from './pipe.pipe';
     FormsModule,
     ReactiveFormsModule,
     MenuModule,
-    CardModule  
+    CardModule,
+    DialogModule,
+    InfiniteScrollModule
+    
 ],
   providers: [
   ],

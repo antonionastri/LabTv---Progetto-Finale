@@ -1,12 +1,23 @@
-
-<div style="padding-top: 80px; z-index: -5;">
-        <h1>ole</h1>
-        <div class="container">
-        <div *ngFor="let f of risultati" class="card flex " (click)="recuperaId(f)">
-            <div id="card" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w500/' + f.poster_path + ')'}">
-                <h3>{{f.title}}</h3>
-            </div>
-        </div>
-        </div>
-        <button (click)="film()">Carica</button>
+<div style="padding-top: 80px; z-index: -5">
+  <h1>ole</h1>
+  <div class="container">
+    <div *ngFor="let f of risultati" class="card flex" (click)="recuperaId(f)">
+      <div
+        id="card"
+        [ngStyle]="{
+          'background-image':
+            'url(https://image.tmdb.org/t/p/w500/' + f.poster_path + ')'
+        }"
+      >
+        <h3>{{ f.title }}</h3>
+      </div>
+    </div>
+  </div>
+  <div
+    infinite-scroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollUpDistance]="3"
+    [infiniteScrollThrottle]="300"
+    (scrolled)="altriFilm()"
+  ></div>
 </div>

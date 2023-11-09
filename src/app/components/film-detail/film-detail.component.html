@@ -1,9 +1,44 @@
-<div *ngIf="film" [style.background-image]="backgroundImageUrl" style="padding-top: 80px;">
-<img src="{{ 'https://image.tmdb.org/t/p/w500' + film.poster_path}}">
-<h1 class="front">{{film.title}}</h1>
-<h3 class="front">{{film.release_date}}</h3>
-<p class="front">{{film.overview}}</p>
-<h5 class="front">{{film.genres[0].name}} - {{film.genres[1].name}}</h5>
-
-
+<div
+  *ngIf="film"
+  [style.background-image]="backgroundImageUrl"
+  style="padding-top: 80px"
+>
+  <img src="{{ 'https://image.tmdb.org/t/p/w500' + film.poster_path }}" />
+  <h1 class="front">{{ film.title }}</h1>
+  <h3 class="front">{{ film.release_date | pipe }}</h3>
+  <p class="front">{{ film.overview }}</p>
+  <h5 class="front">{{ film.genres[0].name }} - {{ film.genres[1].name }}</h5>
+  <div
+    *ngIf="trailer && trailer[0].key"
+    style="width: fit-content; height: fit-content; padding: 0;"
+  >
+    <div
+      class="card flex justify-content-center"
+      style="margin: 0 auto; height: fit-content; padding: 0;"
+    >
+      <p-button
+        (click)="ButtonshowTrailer()"
+        icon="pi pi-youtube"
+        label="Trailer"
+      ></p-button>
+      <p-dialog
+        header="{{ film.title }} - Trailer"
+        [(visible)]="showTrailer"
+        [modal]="true"
+        [style]="{ width: 'fit-content' }"
+        [draggable]="false"
+        [resizable]="false"
+      >
+        <iframe
+          width="560"
+          height="315"
+          [src]="getVideo(trailer[0].key)"
+          frameborder="0"
+          allow="autoplay"
+          style="margin: 0 auto"
+          allowfullscreen
+        ></iframe>
+      </p-dialog>
+    </div>
+  </div>
 </div>

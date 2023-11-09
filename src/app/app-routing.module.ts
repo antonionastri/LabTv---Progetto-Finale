@@ -13,10 +13,10 @@ const routes: Routes = [
     path:"", redirectTo:"/home", pathMatch:"full"
   },
   {
-    path: "catalogo", component: CatalogoComponent, canActivate: [loggedGuard]
+    path: "catalogo", component: CatalogoComponent
   }, 
   {
-    path: "catalogo/:id", component: FilmDetailComponent, canActivate: [loggedGuard]
+    path: "catalogo/:id", component: FilmDetailComponent
   },
   {
     path: "login", component: LoginComponent

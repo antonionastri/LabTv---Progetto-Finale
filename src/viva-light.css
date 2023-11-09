@@ -1,1 +1,7 @@
 @import 'primeng/resources/themes/viva-light/theme.css';
+.front{
+    color: white;
+}
+#card h3{
+    color: white;
+}

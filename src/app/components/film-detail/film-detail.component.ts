@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Result, Root } from 'src/app/model/film';
-import { Detail, Root2 } from 'src/app/model/film-detail';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Detail, ResultVideo, Root2 } from 'src/app/model/film-detail';
 import { FilmService } from 'src/app/services/film.service';
 
 @Component({
@@ -17,8 +17,12 @@ export class FilmDetailComponent implements OnInit{
 
   backgroundImageUrl: string = ''
 
+  trailer?: ResultVideo[]
 
-  constructor(private route: ActivatedRoute, private fs: FilmService){}
+  showTrailer: boolean = false;
+
+
+  constructor(private route: ActivatedRoute, private fs: FilmService, private sanitizer: DomSanitizer){}
 
   ngOnInit(): void {
     
@@ -27,19 +31,41 @@ export class FilmDetailComponent implements OnInit{
 
       if (id) {
         this.resetFilmDetails();
-
+        this.loadTrailer(id)
         this.sub = this.fs.getById(id).subscribe(dati => {
           this.film = dati;
           this.backgroundImageUrl = `url(https://image.tmdb.org/t/p/original${this.film.backdrop_path})`;
-        });
-      }
+        }); 
+    }
     });
+    
+
   }
 
   resetFilmDetails() {
     this.film = undefined; // Resetta i dettagli del film
     this.backgroundImageUrl = ''; // Resetta l'URL dell'immagine di sfondo
   }
+
+
+  loadTrailer(id:number) {
+    this.fs.getTrailer(id).subscribe(dati => {
+      this.trailer = dati;
+    });
+    
+  }
+
+  ButtonshowTrailer(){
+    this.showTrailer = true
+  }
+
+  getVideo(key:string){
+    const videoUrl = `http://www.youtube.com/embed/${key}?autoplay=1`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
+  }
+
+
+
 }
 
 

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Result, Root } from '../model/film';
-import { Observable } from 'rxjs';
-import { Detail, Root2 } from '../model/film-detail';
+import { Observable, map } from 'rxjs';
+import { Detail, ResultVideo, Root2 } from '../model/film-detail';
 
 @Injectable({
   providedIn: 'root',
@@ -41,5 +41,13 @@ export class FilmService {
   getByKeyword(query: any) {
     const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=it-IT`;
     return this.http.get<any>(url, this.HttpOptions);
+  }
+
+  getTrailer(id:any): Observable<ResultVideo[]>{
+    const url = `https://api.themoviedb.org/3/movie/${id}/videos?language=it-IT`
+    return this.http.get<ResultVideo[]>(url, this.HttpOptions)
+    .pipe(
+      map((data: any) => data.results)
+    );
   }
 }

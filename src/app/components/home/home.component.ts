@@ -5,7 +5,6 @@ import { FilmService } from 'src/app/services/film.service';
 import { ThemeService } from 'src/app/theme.service';
 
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -30,6 +29,10 @@ export class HomeComponent implements OnInit{
     })
   }
 
+  altriFilm(){
+    this.film()
+  }
+
   cambia(theme:string){
     this.themeService.switchTheme(theme)
   }
@@ -40,3 +43,4 @@ export class HomeComponent implements OnInit{
     console.log(id)
   }
 }
+

@@ -11,20 +11,24 @@ div{
 div img{
     height: 300px;
     margin-top: 50px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.377), 0 6px 20px 0 rgba(0, 0, 0, 0.432);
 }
 
 .front{
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px) brightness(0.6);
     max-width: 700px;
+    padding: 8px;
 }
 
-h1.front{
+h1.front,
+h5.front,
+h3.front{
 width: fit-content;
+padding: 0 14px;
 }
 
-h5.front{
-    width: fit-content;
+p.front{
+    font-size: 14px;
 }
 
 .reverse{
