@@ -7,6 +7,7 @@ import { ContattiComponent } from './components/contatti/contatti.component';
 import { HomeComponent } from './components/home/home.component';
 import { loggedGuard } from './guards/logged.guard';
 import { FilmDetailComponent } from './components/film-detail/film-detail.component';
+import { CarrelloComponent } from './components/carrello/carrello.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,9 @@ const routes: Routes = [
   },
   {
     path: "home", component: HomeComponent
+  },
+  {
+    path: "carrello", component: CarrelloComponent
   },
 ];
 

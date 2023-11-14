@@ -4,6 +4,9 @@ import { Subscription } from 'rxjs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Detail, ResultVideo, Root2 } from 'src/app/model/film-detail';
 import { FilmService } from 'src/app/services/film.service';
+import { CarrelloService } from 'src/app/services/carrello.service';
+import { Carrello, CarrelloDTO } from 'src/app/model/carrello';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-film-detail',
@@ -21,8 +24,9 @@ export class FilmDetailComponent implements OnInit{
 
   showTrailer: boolean = false;
 
+  model?: Carrello
 
-  constructor(private route: ActivatedRoute, private fs: FilmService, private sanitizer: DomSanitizer){}
+  constructor(private route: ActivatedRoute, private fs: FilmService, private sanitizer: DomSanitizer, public carrello:CarrelloService, private auth:AuthService){}
 
   ngOnInit(): void {
     
@@ -39,7 +43,6 @@ export class FilmDetailComponent implements OnInit{
     }
     });
     
-
   }
 
   resetFilmDetails() {
@@ -64,7 +67,22 @@ export class FilmDetailComponent implements OnInit{
     return this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
   }
 
-
+  aggiungiFilm(title:string, id:number){
+    this.model = {
+      "userId": this.auth.getLoggedUser()?.user.id!,
+      "title":title,
+      "id":id
+    }
+    console.log(this.model)
+    this.carrello.nuovoArticolo(this.model!).subscribe(
+      (response) => {
+        console.log('Film aggiunto al carrello:', response);
+      },
+      (error) => {
+        console.error("Errore durante l'aggiunta del film al carrello:", error);
+      }
+    )
+  }
 
 }
 

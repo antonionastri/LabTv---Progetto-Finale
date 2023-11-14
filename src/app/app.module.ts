@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/dialog';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { BadgeModule } from 'primeng/badge';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TagModule } from 'primeng/tag';
 import { FilmDetailComponent } from './components/film-detail/film-detail.component';
 import { PipePipe } from './pipe.pipe';
+import { CarrelloComponent } from './components/carrello/carrello.component';
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import { PipePipe } from './pipe.pipe';
     ContattiComponent,
     HomeComponent,
     FilmDetailComponent,
-    PipePipe
+    PipePipe,
+    CarrelloComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,8 @@ import { PipePipe } from './pipe.pipe';
     MenuModule,
     CardModule,
     DialogModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    BadgeModule
     
 ],
   providers: [

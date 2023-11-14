@@ -1,6 +1,8 @@
 <div style="padding-top: 80px; z-index: -5">
-  <h1 style="margin-left: 120px;">Film più popolari</h1>
+  
   <div class="container">
+    <h1 class="titolo">Film più popolari</h1>
+    <br>
     <div *ngFor="let f of risultati" class="card flex" (click)="recuperaId(f)">
       <div
         id="card"

@@ -17,7 +17,11 @@
         class="row justify-content-center"
         style="float: right"
       >
-        <p style="font-size: 12px">
+
+      <div>
+      <i class="pi pi-shopping-cart" pBadge style="text-align: center; margin-top: 5px; cursor: pointer; display: inline-block; margin-left: 10px; margin-right: 15px; font-size: 20px;" routerLink="/carrello"></i>
+        
+      <p style="font-size: 12px; margin: 0; display: inline-block;">
           Benvenuto {{ authService.getLoggedUser()?.user?.nome }}
           <i
             class="pi pi-sign-out"
@@ -30,6 +34,7 @@
             "
           ></i>
         </p>
+      </div>
       </div>
 
       <p-autoComplete
@@ -54,7 +59,7 @@
         </ng-template>
       </p-autoComplete>
 
-      <div style="float: right; margin-right: 15px; padding-top: 4px">
+      <!-- <div style="float: right; margin-right: 15px; padding-top: 4px">
         <fa-icon
           [icon]="faMoon"
           (click)="cambia('viva-dark')"
@@ -65,7 +70,7 @@
           (click)="cambia('viva-light')"
           style="font-size: 1.4rem; cursor: pointer; margin-left: 5px"
         ></fa-icon>
-      </div>
+      </div> -->
     </p-megaMenu>
     <p-megaMenu
       *ngIf="!authService.isUserLogged"

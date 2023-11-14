@@ -35,3 +35,9 @@
 #card:hover h3 {
     bottom: 0
 }
+
+.titolo{
+    align-self: flex-start;
+    width: 100%;
+    margin-left: 12px;
+}

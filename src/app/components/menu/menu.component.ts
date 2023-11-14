@@ -32,7 +32,7 @@ export class MenuComponent implements OnInit{
       this.items = [
           { label: 'Home', icon: 'pi pi-fw pi-home', routerLink: "home"},
           { label: 'Catalogo', icon: 'pi pi-fw pi-desktop', routerLink: "catalogo"},
-          { label: 'Contatti', icon: 'pi pi-fw pi-comments', routerLink: "contatti" }
+          { label: 'Contatti', icon: 'pi pi-fw pi-comments', routerLink: "contatti" },
       ];
 
       this.items2 = [

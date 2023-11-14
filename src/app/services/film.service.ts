@@ -50,4 +50,9 @@ export class FilmService {
       map((data: any) => data.results)
     );
   }
+
+  getFilmAcquistati(page: number): Observable<Root> {
+    const word = this.baseUrl + page;
+    return this.http.get<Root>(word, this.HttpOptions);
+  }
 }
