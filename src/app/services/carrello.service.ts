@@ -31,8 +31,9 @@ export class CarrelloService {
     );
   }
 
-  getArticoli(): Observable<Carrello>{
-    return this.http.get<Carrello>(this.url)
+  getArticoli(userId: number): Observable<Carrello[]> {
+    const urlWithUserId = `http://localhost:3000/films-acquistati?userId=${userId}`;
+    return this.http.get<Carrello[]>(urlWithUserId, this.HttpOptions);
   }
 
 }

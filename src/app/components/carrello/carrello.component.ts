@@ -2,8 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { catchError, of } from 'rxjs';
 import { Carrello, CarrelloDTO } from 'src/app/model/carrello';
-import { Root } from 'src/app/model/film';
-import { Root2 } from 'src/app/model/film-detail';
+import { AuthService } from 'src/app/services/auth.service';
 import { CarrelloService } from 'src/app/services/carrello.service';
 
 @Component({
@@ -13,18 +12,23 @@ import { CarrelloService } from 'src/app/services/carrello.service';
 })
 export class CarrelloComponent implements OnInit{
 
-  films: Carrello | undefined
+  films: Carrello[]=[]
 
-  constructor(public carrello:CarrelloService){
+  constructor(public carrello:CarrelloService, private auth:AuthService){
   }
 
   ngOnInit(): void {
     this.getFilms()
+   
 }
 
 
   getFilms(){
-    this.carrello.getArticoli().subscribe((dati) =>{this.films = dati})
+    this.carrello.getArticoli(this.auth.getLoggedUser()?.user.id as number).subscribe((dati) =>{
+      this.films = dati
+    console.log(this.films.length)
+    }) 
+    
   }
 
 
