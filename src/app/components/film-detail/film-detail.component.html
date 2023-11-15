@@ -3,6 +3,9 @@
   [style.background-image]="backgroundImageUrl"
   style="padding-top: 80px"
 >
+
+<p-toast [position]="'top-center'"></p-toast>
+
   <img src="{{ 'https://image.tmdb.org/t/p/w500' + film.poster_path }}" />
   <h1 class="front">{{ film.title }}</h1>
   <h3 class="front">{{ film.release_date | pipe }}</h3>
@@ -10,8 +13,9 @@
   <h5 class="front">{{ film.genres[0].name }} - {{ film.genres[1].name }}</h5>
   <div
     *ngIf="trailer && trailer[0].key"
-    style="width: fit-content; height: fit-content; padding: 0;"
+    style="width: fit-content; height: fit-content; padding: 0; display: inline-block; margin-right: 10px;"
   >
+
     <div
       class="card flex justify-content-center"
       style="margin: 0 auto; height: fit-content; padding: 0;"
@@ -40,8 +44,14 @@
         ></iframe>
       </p-dialog>
     </div>
+</div>
 
-    <button (click)="aggiungiFilm(film.title, film.id)">Acqu</button>
-
-  </div>
+<span *ngIf="!auth.getLoggedUser()" routerLink="/login" class="avviso">Login per poter acquistare</span>
+  <p-button
+        (click)="aggiungiFilm(film.title, film.id, film.backdrop_path)"
+        icon="pi pi-shopping-cart"
+        label="Aggiungi al carrello"
+        severity="success"
+        [disabled]="button"
+  ></p-button>
 </div>

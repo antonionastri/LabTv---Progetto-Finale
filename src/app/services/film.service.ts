@@ -25,6 +25,8 @@ export class FilmService {
   getFilm(page: number): Observable<Root> {
     const word = this.baseUrl + page;
     return this.http.get<Root>(word, this.HttpOptions);
+
+    
   }
 
   public searchFilm(): Observable<Root[]> {

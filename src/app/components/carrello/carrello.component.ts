@@ -12,24 +12,21 @@ import { CarrelloService } from 'src/app/services/carrello.service';
 })
 export class CarrelloComponent implements OnInit{
 
-  films: Carrello[]=[]
+  backgroundImageUrl: string = ``
 
   constructor(public carrello:CarrelloService, private auth:AuthService){
   }
 
   ngOnInit(): void {
-    this.getFilms()
-   
+   this.carrello.getFilms();
 }
 
-
-  getFilms(){
-    this.carrello.getArticoli(this.auth.getLoggedUser()?.user.id as number).subscribe((dati) =>{
-      this.films = dati
-    console.log(this.films.length)
-    }) 
-    
-  }
+rimuoviDalCarrello(film: Carrello): void {
+  this.carrello.eliminaFilm(film).subscribe(() => {
+    alert('Film eliminato con successo!');
+    this.carrello.getFilms();
+  });
+}
 
 
 }

@@ -7,6 +7,9 @@ import { FilmService } from 'src/app/services/film.service';
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CarrelloComponent } from '../carrello/carrello.component';
+import { Carrello } from 'src/app/model/carrello';
+import { CarrelloService } from 'src/app/services/carrello.service';
 
 
 @Component({
@@ -26,9 +29,14 @@ export class MenuComponent implements OnInit{
 
   results = []
 
-  constructor(private themeService:ThemeService, private filmService:FilmService, public authService:AuthService, private router: Router,private route: ActivatedRoute){}
+  badge = true
+
+  films: Carrello[] = [];
+
+  constructor(private themeService:ThemeService, private filmService:FilmService, public authService:AuthService, private router: Router,private route: ActivatedRoute, public carrello:CarrelloService){}
 
   ngOnInit() {
+
       this.items = [
           { label: 'Home', icon: 'pi pi-fw pi-home', routerLink: "home"},
           { label: 'Catalogo', icon: 'pi pi-fw pi-desktop', routerLink: "catalogo"},
@@ -42,6 +50,9 @@ export class MenuComponent implements OnInit{
         { label: 'Registrazione', icon: 'pi pi-fw pi-pencil', routerLink: "register" },
         { label: 'Contatti', icon: 'pi pi-fw pi-comments', routerLink: "contatti" }
     ];
+
+    this.badgeC()
+
     }
 
     search($event: AutoCompleteCompleteEvent) {
@@ -70,6 +81,10 @@ due(){
   this.logout()
 }
    
+badgeC(){
+  if(this.authService.isUserLogged){
+    this.badge = false  }
+}
 
  ///////////////////////////////////////////////////////////
   cambia(theme:string){

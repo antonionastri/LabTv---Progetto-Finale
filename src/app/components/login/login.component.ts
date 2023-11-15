@@ -5,6 +5,7 @@ import { MegaMenuItem } from 'primeng/api';
 import { catchError, of } from 'rxjs';
 import { LoginDTO } from 'src/app/model/auth';
 import { AuthService } from 'src/app/services/auth.service';
+import { CarrelloService } from 'src/app/services/carrello.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent {
   model = new LoginDTO()
   errorMessage = ""
 
-  constructor (private authService: AuthService, private router: Router){}
+  constructor (private authService: AuthService, private router: Router, private carrello:CarrelloService){}
 
   login(){
     this.authService.login(this.model)
@@ -32,6 +33,7 @@ export class LoginComponent {
         this.router.navigate(["/home"])
         console.log(loggedUser)
     })
+
   }
   
 

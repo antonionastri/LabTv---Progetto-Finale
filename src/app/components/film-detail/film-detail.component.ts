@@ -7,6 +7,7 @@ import { FilmService } from 'src/app/services/film.service';
 import { CarrelloService } from 'src/app/services/carrello.service';
 import { Carrello, CarrelloDTO } from 'src/app/model/carrello';
 import { AuthService } from 'src/app/services/auth.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-film-detail',
@@ -26,7 +27,13 @@ export class FilmDetailComponent implements OnInit{
 
   model?: Carrello
 
-  constructor(private route: ActivatedRoute, private fs: FilmService, private sanitizer: DomSanitizer, public carrello:CarrelloService, private auth:AuthService){}
+  button = false
+
+  constructor(private route: ActivatedRoute, private fs: FilmService, private sanitizer: DomSanitizer, public carrello:CarrelloService, public auth:AuthService,private messageService: MessageService){}
+
+  showSuccess() {
+    this.messageService.add({ severity: 'warn', summary: 'Attenzione', detail: 'Film presente nel carrello' });
+}
 
   ngOnInit(): void {
     
@@ -43,6 +50,11 @@ export class FilmDetailComponent implements OnInit{
     }
     });
     
+
+    if(!this.auth.isUserLogged){
+      this.button = true
+    }
+
   }
 
   resetFilmDetails() {
@@ -67,13 +79,20 @@ export class FilmDetailComponent implements OnInit{
     return this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
   }
 
-  aggiungiFilm(title:string, id:number){
+  aggiungiFilm(title:string, id:number, img:string){
+
+    const filmPresente = this.carrello.films.some(film => film.title === title);
+
+  if(!filmPresente){
     this.model = {
       "userId": this.auth.getLoggedUser()?.user.id!,
       "title":title,
-      "id":id
+      "img": img,
+      "idFilm":id
     }
+  
     console.log(this.model)
+    this.carrello.getFilms();
     this.carrello.nuovoArticolo(this.model!).subscribe(
       (response) => {
         console.log('Film aggiunto al carrello:', response);
@@ -82,6 +101,12 @@ export class FilmDetailComponent implements OnInit{
         console.error("Errore durante l'aggiunta del film al carrello:", error);
       }
     )
+  }else{
+    this.showSuccess()
+  }
+
+
+
   }
 
 }
