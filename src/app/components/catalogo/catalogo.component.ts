@@ -29,6 +29,7 @@ export class CatalogoComponent implements OnInit{
         numScroll: 1
     }
 ];
+backgroundImageUrl: string = ''
 
 
   constructor(private filmService:FilmService, private route:ActivatedRoute, private router: Router){}

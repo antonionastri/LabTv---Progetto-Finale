@@ -1,0 +1,11 @@
+.tag{
+    margin-right: 5px;
+}
+
+.tag-click{
+    cursor: pointer;
+}
+
+img{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.377), 0 6px 20px 0 rgba(0, 0, 0, 0.432);
+}

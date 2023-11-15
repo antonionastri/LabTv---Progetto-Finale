@@ -1,32 +1,32 @@
-<div style="padding-top: 80px; z-index: -5">
-  <h1 style="text-align: center">Catalogo</h1>
-  <div class="card" style="max-width: 1400px; margin: 0 auto">
+<div style="padding-top: 100px; z-index: -5">
+  <div class="card" style="width: 100%; margin: 0 auto">
     <p-carousel
       [value]="risultati"
       [numVisible]="1"
-      [numScroll]="3"
+      [numScroll]="1"
       [circular]="true"
       [responsiveOptions]="responsiveOptions"
       [autoplayInterval]="8000"
     >
       <ng-template let-f pTemplate="item">
         <div
-          class="border-1 surface-border border-round m-2 text-center py-5 px-3"
+          class="border-1 surface-border border-round text-center" style="background-image: url('https://image.tmdb.org/t/p/original{{f.backdrop_path}}'); background-size: cover; background-position: center; height: 600px;"
         >
-          <div class="mb-3">
-            <img
-              src="{{ 'https://image.tmdb.org/t/p/w500/' + f.backdrop_path }}"
-              [alt]="f.name"
-            />
-          </div>
-          <div>
-            <h4>{{ f.title }}</h4>
-            <h6>{{ f.overview }}</h6>
+          <div style="text-align: left; margin: 30px;">
+            <img src='https://image.tmdb.org/t/p/original{{f.poster_path}}' style="width: 150px;">
+            
+            <div style=" background-color: rgba(0, 0, 0, 0.281); width: fit-content; border-radius: 5px;">
+            <h2 style="padding: 5px; padding-bottom: 0;">{{ f.title }}</h2>
+            <p style="width: 800px; font-size: 12px; padding: 5px; padding-top: 0;">{{ f.overview }}</p>
+            </div>
+
             <p-tag
+              class="tag"
+              severity="warning"
               >Rilasciato il:
               {{ f.release_date | date : "longDate" : "IT" }}</p-tag
             >
-            <p-tag (click)="recuperaId(f)" routerLink="/{{ f.id }}">Dett</p-tag>
+            <p-tag class="tag-click" (click)="recuperaId(f)" routerLink="/{{ f.id }}">Dettaglio film</p-tag>
           </div>
         </div>
       </ng-template>

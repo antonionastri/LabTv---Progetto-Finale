@@ -6,11 +6,13 @@
     <div class="list-group-item" style="border: 1px solid white; width: 50%;background-image: url('https://image.tmdb.org/t/p/original{{f.img}}'); background-size: cover; background-position: center; margin: 15px; height: 120px;" >
         <h4 style="background-color: black; width: fit-content; padding: 5px;">{{f.title}}</h4>
 
-        <p-button
+<div style="float: right; transform: translate(-50%, -50%);">
+<p-button
+        severity="danger"
         (click)="rimuoviDalCarrello(f)"
         icon="pi pi-shopping-cart"
-  ></p-button>
-
+></p-button>
+</div>
     </div>
 </div>
 </div>
