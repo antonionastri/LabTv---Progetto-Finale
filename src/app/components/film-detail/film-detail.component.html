@@ -11,6 +11,7 @@
   <h3 class="front">{{ film.release_date | pipe }}</h3>
   <p class="front">{{ film.overview }}</p>
   <h5 class="front">{{ film.genres[0].name }} - {{ film.genres[1].name }}</h5>
+  
   <div
     *ngIf="trailer && trailer[0].key"
     style="width: fit-content; height: fit-content; padding: 0; display: inline-block; margin-right: 10px;"
@@ -45,7 +46,6 @@
       </p-dialog>
     </div>
 </div>
-
 <span *ngIf="!auth.getLoggedUser()" routerLink="/login" class="avviso">Login per poter acquistare</span>
   <p-button
         (click)="aggiungiFilm(film.title, film.id, film.backdrop_path)"

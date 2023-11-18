@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoggedUser, LoginDTO } from '../model/auth';
+import { LoggedUser, LoginDTO, RegisterDTO } from '../model/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,9 @@ export class AuthService {
     return this.http.post<LoggedUser>("http://localhost:3000" + "/login", model)
   }
 
+  register(model: RegisterDTO):Observable<LoggedUser>{
+    return this.http.post<LoggedUser>("http://localhost:3000" + "/register", model)
+  }
 
   setLoggedUser(user: LoggedUser){
     localStorage.setItem("user", JSON.stringify(user))
