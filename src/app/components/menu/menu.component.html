@@ -42,7 +42,7 @@
         [suggestions]="results"
         (completeMethod)="search($event)"
         field="title"
-        (onSelect)="selectID($event)"
+        (onSelect)="selectID($event.value)"
         [delay]="500"
         [minLength]="3"
         (onBlur)="onBlur($event)"
