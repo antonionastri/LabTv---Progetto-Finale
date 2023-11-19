@@ -32,6 +32,11 @@ export class FilmService {
     return this.http.get<Root>(word, this.HttpOptions);
   }
 
+  getAction(): Observable<Root>{
+    const word = "https://api.themoviedb.org/3/discover/movie?&with_genres=28"
+    return this.http.get<Root>(word, this.HttpOptions);
+  }
+
   public searchFilm(): Observable<Root[]> {
     const word = this.baseUrl;
     return this.http.get<Root[]>(word, this.HttpOptions);

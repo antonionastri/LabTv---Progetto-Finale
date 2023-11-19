@@ -14,6 +14,8 @@ export class CatalogoComponent implements OnInit{
 
   horror: Result[]=[]
 
+  action: Result[]=[]
+
   responsiveOptions: any[] = [
     {
         breakpoint: '1199px',
@@ -39,6 +41,7 @@ backgroundImageUrl: string = ''
   ngOnInit(){
     this.film()
     this.Horror()
+    this.getAction()
     const id = Number(this.route.snapshot.paramMap.get("id"))
 
   }
@@ -52,6 +55,12 @@ backgroundImageUrl: string = ''
   Horror(){
     this.filmService.getHorror().subscribe(data=>{
       this.horror = data.results
+    })
+  }
+
+  getAction(){
+    this.filmService.getAction().subscribe(data=>{
+      this.action = data.results
     })
   }
 

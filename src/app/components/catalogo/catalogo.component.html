@@ -66,11 +66,10 @@
         </div>
       </ng-template>
     </p-carousel>
-  </div>
+</div>
 
-  <div>
-  <h3>Horror del momento</h3>
-  
+<div>
+<h3 class="horror">Horror</h3>
 <p-carousel [value]="horror" [numVisible]="7" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="9000">
   <ng-template let-horror pTemplate="item">
       <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" style="height: 420px;">
@@ -78,12 +77,27 @@
               <img src="https://image.tmdb.org/t/p/original{{horror.poster_path}}"  class="w-12 shadow-2" (click)="recuperaId(horror)" style="cursor: pointer;"/>
           </div>
           <div>
-              <h4 class="mb-1">{{ horror.title }}</h4>
+              <h4 class="mb-1" style="font-weight: 500;">{{ horror.title }}</h4>
           </div>
       </div>
   </ng-template>
 </p-carousel>
-  </div>
+</div>
 
+<div>
+  <h3 class="action">ACTION</h3>
+  <p-carousel [value]="action" [numVisible]="7" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="9000">
+    <ng-template let-action pTemplate="item">
+        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" style="height: 420px;">
+            <div class="mb-3">
+                <img src="https://image.tmdb.org/t/p/original{{action.poster_path}}"  class="w-12 shadow-2" (click)="recuperaId(action)" style="cursor: pointer;"/>
+            </div>
+            <div>
+                <h4 class="mb-1" style="font-weight: 500;">{{ action.title }}</h4>
+            </div>
+        </div>
+    </ng-template>
+  </p-carousel>
+  </div>
 
 </div>
