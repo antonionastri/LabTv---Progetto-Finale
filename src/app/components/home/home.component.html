@@ -1,7 +1,6 @@
-<div style="padding-top: 80px; z-index: -5">
-  
-  <div class="container">
-    <br>
+<div style="padding-top: 100px; z-index: -5">
+  <div class="containers">
+    <br />
     <div *ngFor="let f of risultati" class="card flex" (click)="recuperaId(f)">
       <div
         id="card"
@@ -14,7 +13,36 @@
       </div>
     </div>
   </div>
+
+  <p-scrollTop
+    target="window"
+    behavior="smooth"
+    styleClass="custom-scrolltop"
+    [threshold]="100"
+    icon="pi pi-arrow-up"
+  ></p-scrollTop>
+  <p-blockUI
+    *ngIf="!authservice.getLoggedUser()"
+    [blocked]="blockedDocument"
+  ></p-blockUI>
   <div
+    *ngIf="!authservice.getLoggedUser()"
+    style="cursor: pointer; overflow-y: hidden"
+  >
+    <div
+      routerLink="/login"
+      class="card flex flex-column align-items-center cover"
+    >
+      <p style="margin-top: 50px">Accedi per visualizzare l'intero catalogo.</p>
+      <i
+        class="pi pi-angle-down fadeout animation-duration-2000 animation-iteration-infinite"
+        style="font-size: 1rem"
+      ></i>
+    </div>
+  </div>
+
+  <div
+    *ngIf="authservice.getLoggedUser()"
     infinite-scroll
     [infiniteScrollDistance]="3"
     [infiniteScrollUpDistance]="3"

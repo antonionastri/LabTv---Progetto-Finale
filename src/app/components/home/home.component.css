@@ -1,3 +1,4 @@
+
 #card{
     border: 1px solid grey;
     border-radius: 5px;
@@ -11,11 +12,12 @@
     margin: 10px;
 }
 
-.container{
+.containers{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    max-width: 95%;
     justify-content: center;
+    margin: 0 auto;
 }
 
 #card h3{
@@ -40,4 +42,12 @@
     align-self: flex-start;
     width: 100%;
     margin-left: 12px;
+}
+
+.cover{
+    width: 100%; 
+    background-color: rgba(0, 0, 0, 0.856);
+    height: 150px;
+    position: fixed;
+    bottom: 0;
 }

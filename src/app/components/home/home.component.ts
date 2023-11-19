@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Result } from 'src/app/model/film';
+import { AuthService } from 'src/app/services/auth.service';
 import { FilmService } from 'src/app/services/film.service';
 import { ThemeService } from 'src/app/theme.service';
 
@@ -16,7 +17,9 @@ export class HomeComponent implements OnInit{
 
   page = 0
 
-  constructor(private themeService:ThemeService, private filmService:FilmService, private router:Router){}
+  blockedDocument: boolean = true;
+
+  constructor(private themeService:ThemeService, private cd: ChangeDetectorRef, private filmService:FilmService, private router:Router, public authservice:AuthService){}
 
   ngOnInit(): void {
     this.film()

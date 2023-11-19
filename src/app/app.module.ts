@@ -20,6 +20,9 @@ import { BadgeModule } from 'primeng/badge';
 import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
 import { BlockUIModule } from 'primeng/blockui';
+import { RippleModule } from 'primeng/ripple';
+import { ScrollTopModule } from 'primeng/scrolltop';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -109,7 +112,9 @@ import { MessageService } from 'primeng/api';
     NoopAnimationsModule,
     ToastModule,
     TooltipModule,
-    BlockUIModule
+    BlockUIModule,
+    RippleModule,
+    ScrollTopModule,
     
 ],
   providers: [

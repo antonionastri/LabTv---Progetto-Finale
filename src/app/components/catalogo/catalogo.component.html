@@ -10,23 +10,58 @@
     >
       <ng-template let-f pTemplate="item">
         <div
-          class="border-1 surface-border border-round text-center" style="background-image: url('https://image.tmdb.org/t/p/original{{f.backdrop_path}}'); background-size: cover; background-position: center; height: 600px;"
+          class="border-1 surface-border border-round text-center"
+          style="background-image: url('https://image.tmdb.org/t/p/original{{f.backdrop_path}}'); background-size: cover; background-position: center; height: 600px;"
         >
-          <div style="text-align: left; margin: 30px;">
-            <img src='https://image.tmdb.org/t/p/original{{f.poster_path}}' style="width: 150px;">
-            
-            <div style=" background-color: rgba(0, 0, 0, 0.281); width: fit-content; border-radius: 5px;">
-            <h2 style="padding: 5px; padding-bottom: 0;">{{ f.title }}</h2>
-            <p style="width: 800px; font-size: 12px; padding: 5px; padding-top: 0;">{{ f.overview }}</p>
+          <div
+            style="
+              text-align: left;
+              margin: 30px;
+              bottom: 0;
+              position: absolute;
+            "
+          >
+            <img
+              src="https://image.tmdb.org/t/p/original{{ f.poster_path }}"
+              style="width: 150px"
+            />
+
+            <div
+              style="
+                background-color: rgba(0, 0, 0, 0.281);
+                width: fit-content;
+                border-radius: 5px;
+              "
+            >
+              <h2 style="padding: 5px; padding-bottom: 0">{{ f.title }}</h2>
+              <p
+                style="
+                  width: 800px;
+                  font-size: 12px;
+                  padding: 5px;
+                  padding-top: 0;
+                "
+              >
+                {{ f.overview }}
+              </p>
             </div>
 
-            <p-tag
-              class="tag"
-              severity="warning"
+            <p-tag class="tag" severity="warning"
               >Rilasciato il:
-              {{ f.release_date | date : "longDate" : "IT" }}</p-tag
+              {{ f.release_date | date:'dd-MM-yyyy' }}</p-tag
             >
-            <p-tag class="tag-click" (click)="recuperaId(f)" routerLink="/{{ f.id }}">Dettaglio film</p-tag>
+            <br/>
+            <button
+            pButton
+            pRipple 
+              class="tag-click"
+              (click)="recuperaId(f)"
+              routerLink="/{{ f.id }}"
+              size="small"
+              >
+              <i class="pi pi-hashtag" style="font-size: 1rem; margin-right: 5px;"></i>
+              Dettaglio film</button
+            >
           </div>
         </div>
       </ng-template>

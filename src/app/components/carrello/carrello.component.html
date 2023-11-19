@@ -1,6 +1,13 @@
-<div style="padding-top: 180px; z-index: -5; margin: 0">
+<div style="padding-top: 180px; z-index: -5; margin: 0">  
+  
+  <div *ngIf="carrello.films.length == 0">
+      <h2>Il carrello è vuoto</h2>
+    </div>
+
   <div class="list-group" *ngFor="let f of carrello.films">
     <p-toast></p-toast>
+
+  
 
     <div
       class="list-group-item"
@@ -10,9 +17,7 @@
         {{ f.title }}
       </h4>
 
-      <h5 style="padding: 5px;">Prezzo: {{ f.idFilm | currency:'EUR' }}</h5>
-
-      <div style="text-align: right; transform: translate(-20px,-80px);">
+      <div style="text-align: right; transform: translate(-20px,-70px);">
         <p-button
           severity="danger"
           (click)="rimuoviDalCarrello(f)"

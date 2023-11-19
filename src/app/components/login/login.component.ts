@@ -32,6 +32,7 @@ export class LoginComponent {
         this.authService.setLoggedUser(loggedUser)
         this.router.navigate(["/home"])
         console.log(loggedUser)
+        this.carrello.getFilms()
     })
 
   }

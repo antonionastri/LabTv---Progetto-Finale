@@ -14,7 +14,7 @@ const routes: Routes = [
     path:"", redirectTo:"/home", pathMatch:"full"
   },
   {
-    path: "catalogo", component: CatalogoComponent
+    path: "catalogo", component: HomeComponent
   }, 
   {
     path: "catalogo/:id", component: FilmDetailComponent
@@ -29,7 +29,7 @@ const routes: Routes = [
     path: "contatti", component: ContattiComponent
   },
   {
-    path: "home", component: HomeComponent
+    path: "home", component: CatalogoComponent
   },
   {
     path: "carrello", component: CarrelloComponent
