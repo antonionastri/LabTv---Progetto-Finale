@@ -6,6 +6,7 @@ export interface Carrello {
   title: string
   img:string
   idFilm: number
+  poster:string
 }
 
 export interface CarrelloDTO {

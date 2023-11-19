@@ -65,7 +65,6 @@ export class MenuComponent implements OnInit{
       const id = value.id
       this.router.navigate([`/catalogo/${id}`])
       this.selectedItem = null
-      console.log(value.title)
     } 
 
     onBlur($event:any) {

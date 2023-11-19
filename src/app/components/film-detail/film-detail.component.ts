@@ -32,7 +32,7 @@ export class FilmDetailComponent implements OnInit{
   constructor(private route: ActivatedRoute, private fs: FilmService, private sanitizer: DomSanitizer, public carrello:CarrelloService, public auth:AuthService,private messageService: MessageService){}
 
   showSuccess() {
-    this.messageService.add({ severity: 'warn', summary: 'Attenzione', detail: 'Film presente nel carrello' });
+    this.messageService.add({ severity: 'warn', summary: 'Attenzione', detail: 'Film già presente nel carrello' });
 }
 
   ngOnInit(): void {
@@ -57,6 +57,10 @@ export class FilmDetailComponent implements OnInit{
 
   }
 
+  showSuccessAdd() {
+    this.messageService.add({ severity: 'success', summary: 'Aggiunto!', detail: 'Film aggiunto correttamente' });
+  }
+
   resetFilmDetails() {
     this.film = undefined; // Resetta i dettagli del film
     this.backgroundImageUrl = ''; // Resetta l'URL dell'immagine di sfondo
@@ -79,7 +83,7 @@ export class FilmDetailComponent implements OnInit{
     return this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
   }
 
-  aggiungiFilm(title:string, id:number, img:string){
+  aggiungiFilm(title:string, id:number, img:string, poster:string){
 
     const filmPresente = this.carrello.films.some(film => film.title === title);
 
@@ -88,13 +92,15 @@ export class FilmDetailComponent implements OnInit{
       "userId": this.auth.getLoggedUser()?.user.id!,
       "title":title,
       "img": img,
-      "idFilm":id
+      "idFilm":id,
+      "poster":poster
     }
   
     console.log(this.model)
     this.carrello.getFilms();
     this.carrello.nuovoArticolo(this.model!).subscribe(
       (response) => {
+        this.showSuccessAdd()
         console.log('Film aggiunto al carrello:', response);
       },
       (error) => {

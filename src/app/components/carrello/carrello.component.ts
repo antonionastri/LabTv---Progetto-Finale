@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { catchError, of } from 'rxjs';
 import { Carrello, CarrelloDTO } from 'src/app/model/carrello';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,7 +15,7 @@ export class CarrelloComponent implements OnInit{
 
   backgroundImageUrl: string = ``
 
-  constructor(public carrello:CarrelloService, private auth:AuthService){
+  constructor(public carrello:CarrelloService, private auth:AuthService,private messageService: MessageService){
   }
 
   ngOnInit(): void {
@@ -23,11 +24,14 @@ export class CarrelloComponent implements OnInit{
 
 rimuoviDalCarrello(film: Carrello): void {
   this.carrello.eliminaFilm(film).subscribe(() => {
-    alert('Film eliminato con successo!');
     this.carrello.getFilms();
+    this.showSuccess()
   });
 }
 
+showSuccess() {
+  this.messageService.add({ severity: 'success', summary: 'Film Eliminato', detail: 'Film eliminato correttamente' });
+}
 
 }
 

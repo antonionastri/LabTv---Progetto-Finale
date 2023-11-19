@@ -1,27 +1,30 @@
-<div style="padding-top: 180px; z-index: -5; margin: 0">  
+<div style="padding-top: 120px; z-index: -5; margin: 0">  
   
-  <div *ngIf="carrello.films.length == 0">
+  <div *ngIf="carrello.films.length == 0" style="width: 100%; text-align: center;">
       <h2>Il carrello è vuoto</h2>
     </div>
-
-  <div class="list-group" *ngFor="let f of carrello.films">
-    <p-toast></p-toast>
-
-  
-
+<p-toast position="top-center"></p-toast>
+  <div class="list-group" *ngFor="let f of carrello.films" style="margin: 0 auto;">
     <div
       class="list-group-item"
-      style="border: 1px solid white; width: 50%;background-image: url('https://image.tmdb.org/t/p/original{{f.img}}'); background-size: cover; background-position: center; margin: 15px; height: 120px;"
-    >
-      <h4 style="background-color: black; width: fit-content; padding: 5px">
+      style="width: 50%;background-image: url('https://image.tmdb.org/t/p/original{{f.img}}'); background-size: cover; background-position: center; margin: 15px auto; height: 280px;"
+      >
+
+      <img src="https://image.tmdb.org/t/p/original{{f.poster}}" style="width: 100px; margin-top: 20px; margin-left: 5px; border: 1px solid white;">
+
+      <h4 style="background-color: black; width: fit-content; padding: 5px;margin-left: 5px; border-radius: 5px; margin-bottom: 0; font-style: italic;">
         {{ f.title }}
       </h4>
+      <p style="background-color: black; width: fit-content; padding: 5px; margin-left: 5px; border-radius: 5px; margin-top: 2px; font-size: 12px;">
+        <span style="font-weight: bold;">Id Film: </span>{{f.idFilm}}
+      </p>
 
       <div style="text-align: right; transform: translate(-20px,-70px);">
         <p-button
           severity="danger"
           (click)="rimuoviDalCarrello(f)"
-          icon="pi pi-shopping-cart"
+          icon="pi pi-trash"
+          label="Rimuovi"
         ></p-button>
       </div>
     </div>
