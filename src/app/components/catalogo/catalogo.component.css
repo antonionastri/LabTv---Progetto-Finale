@@ -24,6 +24,15 @@ img{
     src: url(/assets/font/Factory.ttf);
 }
 
+@font-face {
+    font-family: love;
+    src: url(/assets/font/KLCupid.ttf);
+}
+
+@font-face {
+    font-family: anime;
+    src: url(/assets/font/waltograph42.otf);
+}
 
 .horror{
     font-family: myFirstFont, sans-serif;
@@ -36,6 +45,24 @@ img{
 
 .action{
     font-family: action, sans-serif;
+    font-size: 55px;
+    margin: 0;
+    margin-left: 30px;
+    margin-top: 50px;
+    font-weight: 500;
+}
+
+.love{
+    font-family: love, sans-serif;
+    font-size: 55px;
+    margin: 0;
+    margin-left: 30px;
+    margin-top: 50px;
+    font-weight: 500;
+}
+
+.anim{
+    font-family: anime, sans-serif;
     font-size: 55px;
     margin: 0;
     margin-left: 30px;

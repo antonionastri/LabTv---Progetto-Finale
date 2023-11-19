@@ -86,7 +86,7 @@
 
 <div>
   <h3 class="action">ACTION</h3>
-  <p-carousel [value]="action" [numVisible]="7" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="9000">
+  <p-carousel [value]="action" [numVisible]="7" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="9001">
     <ng-template let-action pTemplate="item">
         <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" style="height: 420px;">
             <div class="mb-3">
@@ -99,5 +99,37 @@
     </ng-template>
   </p-carousel>
   </div>
+
+<div>
+    <h3 class="love">[romantic]</h3>
+    <p-carousel [value]="love" [numVisible]="7" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="9001">
+      <ng-template let-love pTemplate="item">
+          <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" style="height: 420px;">
+              <div class="mb-3">
+                  <img src="https://image.tmdb.org/t/p/original{{love.poster_path}}"  class="w-12 shadow-2" (click)="recuperaId(love)" style="cursor: pointer;"/>
+              </div>
+              <div>
+                  <h4 class="mb-1" style="font-weight: 500;">{{ love.title }}</h4>
+              </div>
+          </div>
+      </ng-template>
+    </p-carousel>
+</div>
+  
+<div>
+  <h3 class="anim">Animation</h3>
+  <p-carousel [value]="anim" [numVisible]="7" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="9001">
+    <ng-template let-anim pTemplate="item">
+        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" style="height: 420px;">
+            <div class="mb-3">
+                <img src="https://image.tmdb.org/t/p/original{{anim.poster_path}}"  class="w-12 shadow-2" (click)="recuperaId(anim)" style="cursor: pointer;"/>
+            </div>
+            <div>
+                <h4 class="mb-1" style="font-weight: 500;">{{ anim.title }}</h4>
+            </div>
+        </div>
+    </ng-template>
+  </p-carousel>
+</div>
 
 </div>

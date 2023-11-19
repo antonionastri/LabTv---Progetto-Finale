@@ -16,6 +16,10 @@ export class CatalogoComponent implements OnInit{
 
   action: Result[]=[]
 
+  anim: Result[]=[]
+
+  love: Result[]=[]
+
   responsiveOptions: any[] = [
     {
         breakpoint: '1199px',
@@ -42,6 +46,8 @@ backgroundImageUrl: string = ''
     this.film()
     this.Horror()
     this.getAction()
+    this.getLove()
+    this.anime()
     const id = Number(this.route.snapshot.paramMap.get("id"))
 
   }
@@ -49,6 +55,18 @@ backgroundImageUrl: string = ''
   film(){
     this.filmService.getFilm(1).subscribe(data=>{
       this.risultati = data.results
+    })
+  }
+
+  anime(){
+    this.filmService.getAnim().subscribe(data=>{
+      this.anim = data.results
+    })
+  }
+
+  getLove(){
+    this.filmService.getLove().subscribe(data=>{
+      this.love = data.results
     })
   }
 
