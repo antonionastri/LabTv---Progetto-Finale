@@ -1,4 +1,5 @@
-<div style="padding-top: 100px; z-index: -5">
+<body [ngClass]="{'no-scroll': !authservice.getLoggedUser()}">
+<div style="padding-top: 100px; z-index: -5" >
   <div class="containers">
     <br />
     <div *ngFor="let f of risultati" class="card flex" (click)="recuperaId(f)">
@@ -21,10 +22,22 @@
     [threshold]="100"
     icon="pi pi-arrow-up"
   ></p-scrollTop>
-  <p-blockUI
+ 
+ <div
+    *ngIf="authservice.getLoggedUser()"
+    infinite-scroll
+    [infiniteScrollDistance]="3"
+    [infiniteScrollUpDistance]="3"
+    [infiniteScrollThrottle]="300"
+    (scrolled)="altriFilm()"
+  >
+</div> 
+
+ <p-blockUI
     *ngIf="!authservice.getLoggedUser()"
     [blocked]="blockedDocument"
   ></p-blockUI>
+
   <div
     *ngIf="!authservice.getLoggedUser()"
     style="cursor: pointer; overflow-y: hidden"
@@ -41,12 +54,5 @@
     </div>
   </div>
 
-  <div
-    *ngIf="authservice.getLoggedUser()"
-    infinite-scroll
-    [infiniteScrollDistance]="3"
-    [infiniteScrollUpDistance]="3"
-    [infiniteScrollThrottle]="300"
-    (scrolled)="altriFilm()"
-  ></div>
 </div>
+</body>

@@ -1,3 +1,6 @@
+.no-scroll {
+    overflow-y: hidden;
+}
 
 #card{
     border: 1px solid grey;
