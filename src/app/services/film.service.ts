@@ -24,9 +24,12 @@ export class FilmService {
 
   getFilm(page: number): Observable<Root> {
     const word = this.baseUrl + page;
-    return this.http.get<Root>(word, this.HttpOptions);
+    return this.http.get<Root>(word, this.HttpOptions); 
+  }
 
-    
+  getHorror(): Observable<Root>{
+    const word = "https://api.themoviedb.org/3/discover/movie?&with_genres=27"
+    return this.http.get<Root>(word, this.HttpOptions);
   }
 
   public searchFilm(): Observable<Root[]> {
