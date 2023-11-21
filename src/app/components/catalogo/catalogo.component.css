@@ -2,6 +2,15 @@
     margin-right: 5px;
 }
 
+.details{
+    cursor: pointer;
+}
+
+.details:hover{
+    transition: 0.4s;
+    scale: 1.03;
+}
+
 .tag-click{
     cursor: pointer;    
     font-size: 12px;

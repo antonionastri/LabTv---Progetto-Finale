@@ -28,22 +28,22 @@ export class FilmService {
   }
 
   getHorror(): Observable<Root>{
-    const word = "https://api.themoviedb.org/3/discover/movie?&with_genres=27"
+    const word = "https://api.themoviedb.org/3/discover/movie?language=it-IT&with_genres=27"
     return this.http.get<Root>(word, this.HttpOptions);
   }
 
   getAction(): Observable<Root>{
-    const word = "https://api.themoviedb.org/3/discover/movie?&with_genres=28"
+    const word = "https://api.themoviedb.org/3/discover/movie?language=it-IT&with_genres=28"
     return this.http.get<Root>(word, this.HttpOptions);
   }
 
   getLove(): Observable<Root>{
-    const word = "https://api.themoviedb.org/3/discover/movie?&with_genres=10749"
+    const word = "https://api.themoviedb.org/3/discover/movie?language=it-IT&with_genres=10749"
     return this.http.get<Root>(word, this.HttpOptions);
   }
 
   getAnim(): Observable<Root>{
-    const word = "https://api.themoviedb.org/3/discover/movie?&with_genres=16"
+    const word = "https://api.themoviedb.org/3/discover/movie?language=it-IT&with_genres=16"
     return this.http.get<Root>(word, this.HttpOptions);
   }
 
