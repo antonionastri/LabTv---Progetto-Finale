@@ -47,10 +47,9 @@
         [minLength]="3"
         (onBlur)="onBlur($event)"
         (onFocus)="onBlur($event);"
-        placeholder="Search movies"
+        placeholder="Cerca per titolo"
         [showClear]="true"
         [showEmptyMessage]="true"
-        [focusOnHover]="true"
       >
         <ng-template let-film pTemplate="item">
           <div class="flex align-items-center gap-2">
