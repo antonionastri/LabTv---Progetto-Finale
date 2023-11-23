@@ -22,6 +22,8 @@ import { TooltipModule } from 'primeng/tooltip';
 import { BlockUIModule } from 'primeng/blockui';
 import { RippleModule } from 'primeng/ripple';
 import { ScrollTopModule } from 'primeng/scrolltop';
+import { PasswordModule } from 'primeng/password';
+import { MessagesModule } from 'primeng/messages';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -115,6 +117,8 @@ import { MessageService } from 'primeng/api';
     BlockUIModule,
     RippleModule,
     ScrollTopModule,
+    PasswordModule,
+    MessagesModule
     
 ],
   providers: [

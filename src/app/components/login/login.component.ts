@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MegaMenuItem } from 'primeng/api';
+import { MegaMenuItem, Message } from 'primeng/api';
 import { catchError, of } from 'rxjs';
 import { LoginDTO } from 'src/app/model/auth';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,29 +12,44 @@ import { CarrelloService } from 'src/app/services/carrello.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   model = new LoginDTO()
   errorMessage = ""
 
+  messages!: Message[]
+
   constructor (private authService: AuthService, private router: Router, private carrello:CarrelloService){}
+
+  ngOnInit(): void {
+    this.messages = [{ severity: 'success', summary: 'Success', detail: 'Message Content' }];
+  }
 
   login(){
     this.authService.login(this.model)
     .pipe(
       catchError((err: HttpErrorResponse) => {
         this.errorMessage = err.error
-
+        console.log(err)
         return of (undefined)
       })
     )
     .subscribe(loggedUser =>{
-      if(loggedUser)
+      if(loggedUser){
         this.authService.setLoggedUser(loggedUser)
         this.router.navigate(["/home"])
         console.log(loggedUser)
-        this.carrello.getFilms()
+        this.carrello.getFilms()}
+        else{
+          this.router.navigate(["/login"])
+        }
+                
+
     })
 
+  }
+
+  resetError(){
+    this.errorMessage = ""
   }
   
 

@@ -1,20 +1,72 @@
-<div  style="padding-top: 80px; z-index: -5">
-<form #laForm="ngForm" class="surface-card p-4 shadow-2 border-round lg:w-6" style="margin: 15px auto; max-width: 500px;" (ngSubmit)="login()">
+<div style="padding-top: 80px; z-index: -5">
+  <form
+    #laForm="ngForm"
+    class="surface-card p-4 shadow-2 border-round lg:w-6"
+    style="margin: 15px auto; max-width: 500px"
+    (ngSubmit)="login()"
+  >
     <div class="text-center mb-5">
-        <img src="https://i.ibb.co/k3ZQpM6/logo-tipo.png" alt="Image" height="50" class="mb-3">
-        <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
-        <span class="text-600 font-medium line-height-3">Don't have an account?</span>
-        <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer" routerLink="/register">Create today!</a>
+      <img
+        src="https://i.ibb.co/k3ZQpM6/logo-tipo.png"
+        alt="Image"
+        height="50"
+        class="mb-3"
+      />
+      <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
+      <span class="text-600 font-medium line-height-3"
+        >Don't have an account?</span
+      >
+      <a
+        class="font-medium no-underline ml-2 text-blue-500 cursor-pointer"
+        routerLink="/register"
+        >Create today!</a
+      >
     </div>
 
     <div>
-        <label for="email" class="block text-900 font-medium mb-2">Email</label>
-        <input type="email" placeholder="Email address" pInputText class="w-full mb-3" #email="ngModel" required [(ngModel)]="model.email" name="email" >
+      <label for="email" class="ng-dirty block text-900 font-medium mb-2"
+        >Email</label
+      >
+      <input
+        type="email"
+        placeholder="Email address"
+        pInputText
+        class="w-full mb-3"
+        #email="ngModel"
+        required
+        [(ngModel)]="model.email"
+        name="email"
+        (focus)="resetError()"
+      />
+      <div *ngIf="email.invalid && !email.pristine" class="text-red-500 mb-3">Invalid email format</div>
 
-        <label for="password" class="block text-900 font-medium mb-2">Password</label>
-        <input type="password" placeholder="Password" pInputText class="w-full mb-3" #password="ngModel" required [(ngModel)]="model.password" name="password">
+      <label for="password" class="block text-900 font-medium mb-2"
+        >Password</label
+      >
+      <input
+        type="password"
+        placeholder="Password"
+        pInputText
+        class="w-full mb-3"
+        #password="ngModel"
+        required
+        [(ngModel)]="model.password"
+        name="password"
+        (focus)="resetError()"
+      />
+      <div *ngIf="password.invalid && !password.pristine" class="text-red-500 mb-3">Password is required</div>
 
-        <button type="submit" pButton pRipple label="Sign In" icon="pi pi-user" class="w-full" [disabled]="!laForm.form.valid"></button>
+      <div *ngIf="errorMessage" class="text-red-500 mb-3">{{ errorMessage }}</div>
+
+      <button
+        type="submit"
+        pButton
+        pRipple
+        label="Sign In"
+        icon="pi pi-user"
+        class="w-full"
+        [disabled]="!laForm.form.valid"
+      ></button>
     </div>
-</form>
+  </form>
 </div>

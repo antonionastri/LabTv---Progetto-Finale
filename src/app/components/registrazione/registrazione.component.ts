@@ -29,11 +29,19 @@ register(){
     })
   )
   .subscribe(loggedUser =>{
-    if(loggedUser)
+    if(loggedUser){
       this.authService.setLoggedUser(loggedUser)
       this.router.navigate(["/"])
-      console.log(loggedUser)
+      console.log(loggedUser)}
+      else{
+        this.router.navigate(["/register"])
+      }
   })
 }
+
+resetError(){
+  this.errorMessage = ""
+}
+
 
 }

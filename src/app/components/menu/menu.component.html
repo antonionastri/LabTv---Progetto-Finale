@@ -42,10 +42,15 @@
         [suggestions]="results"
         (completeMethod)="search($event)"
         field="title"
-        (onSelect)="selectID($event.value)"
+        (onSelect)="selectID($event.value);"
         [delay]="500"
         [minLength]="3"
         (onBlur)="onBlur($event)"
+        (onFocus)="onBlur($event);"
+        placeholder="Search movies"
+        [showClear]="true"
+        [showEmptyMessage]="true"
+        [focusOnHover]="true"
       >
         <ng-template let-film pTemplate="item">
           <div class="flex align-items-center gap-2">

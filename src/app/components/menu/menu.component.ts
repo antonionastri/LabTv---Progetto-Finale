@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MegaMenuItem, MenuItem } from 'primeng/api';
 import { ThemeService } from 'src/app/theme.service';
 import { faMoon } from '@fortawesome/free-solid-svg-icons';
@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit{
   faMoon = faMoon;
   faSun = faSun;
 
-  selectedItem: any;
+  selectedItem: any = null;
 
   results = []
 
@@ -65,15 +65,16 @@ export class MenuComponent implements OnInit{
       const id = value.id
       this.router.navigate([`/catalogo/${id}`])
       this.selectedItem = null
+      this.results = [];
     } 
 
     onBlur($event:any) {
-      console.log($event.target.value);
+      $event.target.value = "";
     }
 
     logout(){
       this.authService.logout()
-      this.router.navigate(["home"])
+      this.router.navigate(["/home"])
     }
   
 due(){
