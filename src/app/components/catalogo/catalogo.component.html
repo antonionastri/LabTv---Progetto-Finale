@@ -72,12 +72,12 @@
 <h3 class="horror">Horror</h3>
 <p-carousel [value]="horror" [numVisible]="7" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="9000" [showIndicators]="false">
   <ng-template let-horror pTemplate="item">
-      <div class="border-1 surface-border border-round m-2 text-center py-5 px-3 details" style="height: 420px;" (click)="recuperaId(horror)">
-          <div class="mb-3">
-              <img src="https://image.tmdb.org/t/p/original{{horror.poster_path}}"  class="w-12 shadow-2" />
+      <div class="border-1 surface-border border-round m-2 text-center py-5 px-3 details" style="height: 440px;" (click)="recuperaId(horror)">
+          <div class="mb-2">
+              <img src="https://image.tmdb.org/t/p/original{{horror.poster_path}}"  class="w-12 shadow-2" style=" height: 320px;"/>
           </div>
           <div>
-              <h4 class="mb-1" style="font-weight: 500;">{{ horror.title }}</h4>
+              <h4 class="mb-1" style="font-weight: 500; margin-top: 0; font-size: 13px;">{{ horror.title }}</h4>
           </div>
       </div>
   </ng-template>
@@ -88,12 +88,12 @@
   <h3 class="action">ACTION</h3>
   <p-carousel [value]="action" [numVisible]="7" [circular]="true" [autoplayInterval]="9500" [showIndicators]="false">
     <ng-template let-action pTemplate="item">
-        <div class="border-1 details surface-border border-round m-2 text-center py-5 px-3" style="height: 420px;" (click)="recuperaId(action)">
-            <div class="mb-3">
-                <img src="https://image.tmdb.org/t/p/original{{action.poster_path}}"  class="w-12 shadow-2"  style="cursor: pointer;"/>
+        <div class="border-1 details surface-border border-round m-2 text-center py-5 px-3" style="height: 440px;" (click)="recuperaId(action)">
+            <div class="mb-2">
+                <img src="https://image.tmdb.org/t/p/original{{action.poster_path}}"  class="w-12 shadow-2"  style="cursor: pointer; height: 320px;"/>
             </div>
             <div>
-                <h4 class="mb-1" style="font-weight: 500;">{{ action.title }}</h4>
+                <h4 class="mb-1" style="font-weight: 500; margin-top: 0; font-size: 13px;">{{ action.title }}</h4>
             </div>
         </div>
     </ng-template>
@@ -104,12 +104,12 @@
     <h3 class="love">[romantic]</h3>
     <p-carousel [value]="love" [numVisible]="7" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="9701" [showIndicators]="false">
       <ng-template let-love pTemplate="item">
-          <div class="border-1 details surface-border border-round m-2 text-center py-5 px-3" style="height: 420px;" (click)="recuperaId(love)">
-              <div class="mb-3">
-                  <img src="https://image.tmdb.org/t/p/original{{love.poster_path}}"  class="w-12 shadow-2" style="cursor: pointer;"/>
+          <div class="border-1 details surface-border border-round m-2 text-center py-5 px-3" style="height: 440px;" (click)="recuperaId(love)">
+              <div class="mb-2">
+                  <img src="https://image.tmdb.org/t/p/original{{love.poster_path}}"  class="w-12 shadow-2" style="cursor: pointer; height: 320px;"/>
               </div>
               <div>
-                  <h4 class="mb-1" style="font-weight: 500;">{{ love.title }}</h4>
+                  <h4 class="mb-1" style="font-weight: 500; margin-top: 0; font-size: 13px;">{{ love.title }}</h4>
               </div>
           </div>
       </ng-template>
@@ -120,12 +120,12 @@
   <h3 class="anim">Animation</h3>
   <p-carousel [value]="anim" [numVisible]="7" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="10001" [showIndicators]="false">
     <ng-template let-anim pTemplate="item">
-        <div class="border-1 details surface-border border-round m-2 text-center py-5 px-3" style="height: 420px;" (click)="recuperaId(anim)">
-            <div class="mb-3">
-                <img src="https://image.tmdb.org/t/p/original{{anim.poster_path}}"  class="w-12 shadow-2" style="cursor: pointer;"/>
+        <div class="border-1 details surface-border border-round m-2 text-center py-5 px-3" style="height: 440px;" (click)="recuperaId(anim)">
+            <div class="mb-2">
+                <img src="https://image.tmdb.org/t/p/original{{anim.poster_path}}"  class="w-12 shadow-2" style="cursor: pointer; height: 320px;"/>
             </div>
             <div>
-                <h4 class="mb-1" style="font-weight: 500;">{{ anim.title }}</h4>
+                <h4 class="mb-1" style="font-weight: 500; margin-top: 0;  font-size: 13px;">{{ anim.title }}</h4>
             </div>
         </div>
     </ng-template>

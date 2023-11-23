@@ -12,14 +12,14 @@
         height="50"
         class="mb-3"
       />
-      <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
+      <div class="text-900 text-3xl font-medium mb-3">Bentornato!</div>
       <span class="text-600 font-medium line-height-3"
-        >Don't have an account?</span
+        >Non hai un account?</span
       >
       <a
         class="font-medium no-underline ml-2 text-blue-500 cursor-pointer"
         routerLink="/register"
-        >Create today!</a
+        >Registrati!</a
       >
     </div>
 
@@ -29,7 +29,7 @@
       >
       <input
         type="email"
-        placeholder="Email address"
+        placeholder="Email"
         pInputText
         class="w-full mb-3"
         #email="ngModel"
@@ -62,7 +62,7 @@
         type="submit"
         pButton
         pRipple
-        label="Sign In"
+        label="Accedi"
         icon="pi pi-user"
         class="w-full"
         [disabled]="!laForm.form.valid"
