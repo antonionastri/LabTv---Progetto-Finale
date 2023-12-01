@@ -1,5 +1,5 @@
-<div style="padding-top: 90px; z-index: -5">
-  <h1>Contatta LABFORTRAINING, la scuola di web a Roma.</h1>
+<div class="contatti" style="z-index: -5;overflow: auto;">
+  <h1 style="margin-bottom: 50px;">Contatta LABFORTRAINING, la scuola di web a Roma.</h1>
   <ul>
     <li>
       <a href="mailto:info@labfortraining.it" class="mail"
@@ -13,70 +13,50 @@
       >
     </li>
   </ul>
-  <p>
+  <p style="margin: 50px 0;">
     La sede LABFORTRAINING è a Roma, in via Francesco Saverio Solari, 16. Gli
     uffici sono aperti dal Lunedì al Venerdì dalle 9:30 alle 18:30.
   </p>
   <iframe
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.5943355442537!2d12.456178537355466!3d41.86302351792502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f601da414ff73%3A0x50af1f8c10d58d13!2sLABFORTRAINING!5e0!3m2!1sit!2sus!4v1700751508133!5m2!1sit!2sus"
-    width="600"
-    height="450"
-    style="border: 0"
+    style="border: 0; float: left;"
     allowfullscreen=""
     loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"
+    class="surface-card p-4 w-full lg:w-6"
   ></iframe>
+
+  <div class="surface-card p-4  w-full lg:w-6" style="float: left">
+    <div class="text-center mb-5">
+        <div class="text-900 text-3xl font-medium mb-3">Contattaci!
+        </div>
+    </div>
+  
+    <form #laForm="ngForm">
+      <label for="nome" class="block text-900 font-medium mb-2">Nome*</label>
+        <input id="nome" type="text" placeholder="Nome" pInputText class="w-full mb-3" required>
+  
+        <label for="email1" class="block text-900 font-medium mb-2">Email*</label>
+        <input id="email1" type="text" placeholder="Email" pInputText class="w-full mb-3" required>
+  
+        <label for="telefono" class="block text-900 font-medium mb-2">Telefono*</label>
+        <input id="telefono" type="text" placeholder="Telefono" pInputText class="w-full mb-3" required>
+  
+        <label for="text" class="block text-900 font-medium mb-2">Messaggio</label>
+        <input id="text" type="text" pInputText class="w-full mb-3" autocomplete="none" style="height: 120px;">
+  
+        <div class="flex align-items-center justify-content-between mb-6">
+            <div class="flex align-items-center">
+                <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
+                <label for="rememberme1" class="text-900"> Ho letto <a href="https://www.labfortraining.it/labfortraining-privacy" target="_blank">l'informativa sulla privacy</a> e accetto le condizioni</label>
+            </div>
+        </div>
+  
+  
+        <button pButton type="submit" label="Invia" icon="pi pi-user" class="w-full" [disabled]="!laForm.form.valid"
+        ></button>
+    </form>
+  </div>
+
 </div>
-<div id="UpdatePanelInfo">
-  <ul>
-    <li>
-      <label for="txtNome">Nome *</label
-      ><input name="ctl00$txtNome" type="text" id="txtNome" class="testo" />
-    </li>
-    <li>
-      <label for="txtEmail">Email *</label
-      ><input
-        name="ctl00$txtEmail"
-        id="txtEmail"
-        class="testo"
-        type="email"
-      /><input
-        name="ctl00$txtEmail2"
-        id="txtEmail2"
-        class="testo2"
-        type="email"
-      />
-    </li>
-    <li>
-      <label for="txtTel">Telefono *</label
-      ><input name="ctl00$txtTel" id="txtTel" class="testo" type="tel" />
-    </li>
-    <li>
-      <label for="txtMessaggio">Richiesta</label
-      ><textarea
-        name="ctl00$txtMessaggio"
-        rows="2"
-        cols="20"
-        id="txtMessaggio"
-        class="AreaTesto"
-      ></textarea>
-    </li>
-    <li class="privacy">
-      <input id="chkPrivacy" type="checkbox" name="ctl00$chkPrivacy" /> Ho letto
-      l'<a href="/labfortraining-privacy" target="_blank"
-        >informativa sulla privacy</a
-      >
-      e accetto le condizioni
-    </li>
-    <li>
-      <input
-        type="submit"
-        name="ctl00$bt_info"
-        value="Richiedi informazioni"
-        onclick="return checkForm();"
-        id="bt_info"
-        class="pulsante"
-      />
-    </li>
-  </ul>
-</div>
+

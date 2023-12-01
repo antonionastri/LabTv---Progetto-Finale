@@ -22,20 +22,53 @@ export class CatalogoComponent implements OnInit{
 
   responsiveOptions: any[] = [
     {
-        breakpoint: '1199px',
-        numVisible: 1,
+        breakpoint: '1600px',
+        numVisible: 6,
         numScroll: 1
     },
     {
-        breakpoint: '991px',
+        breakpoint: '1450px',
+        numVisible: 5,
+        numScroll: 1
+    },
+    {
+        breakpoint: '1200px',
+        numVisible: 4,
+        numScroll: 1
+    },
+    {
+        breakpoint: '1000px',
+        numVisible: 3,
+        numScroll: 1
+    },
+    {
+        breakpoint: '750px',
         numVisible: 2,
         numScroll: 1
     },
     {
-        breakpoint: '767px',
+        breakpoint: '600px',
         numVisible: 1,
         numScroll: 1
     }
+];
+
+responsiveOptions2: any[] = [
+  {
+      breakpoint: '1600px',
+      numVisible: 1,
+      numScroll: 1
+  },
+  {
+      breakpoint: '991px',
+      numVisible: 1,
+      numScroll: 1
+  },
+  {
+      breakpoint: '767px',
+      numVisible: 1,
+      numScroll: 1
+  }
 ];
 backgroundImageUrl: string = ''
 

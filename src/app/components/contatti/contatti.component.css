@@ -1,0 +1,18 @@
+.contatti{
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-top: 90px;
+}
+
+.contatti ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+iframe{
+    width: 600px;
+    height: 690px;
+}

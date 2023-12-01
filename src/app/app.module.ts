@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Input, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MenubarModule } from 'primeng/menubar';
@@ -24,7 +24,7 @@ import { RippleModule } from 'primeng/ripple';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { PasswordModule } from 'primeng/password';
 import { MessagesModule } from 'primeng/messages';
-
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -118,7 +118,8 @@ import { MessageService } from 'primeng/api';
     RippleModule,
     ScrollTopModule,
     PasswordModule,
-    MessagesModule
+    MessagesModule,
+    InputTextModule
     
 ],
   providers: [

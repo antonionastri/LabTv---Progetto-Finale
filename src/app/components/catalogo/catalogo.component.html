@@ -1,11 +1,11 @@
-<div style="padding-top: 100px; z-index: -5">
+<div id="page">
   <div class="card" style="width: 100%; margin: 0 auto">
     <p-carousel
       [value]="risultati"
       [numVisible]="1"
       [numScroll]="1"
       [circular]="true"
-      [responsiveOptions]="responsiveOptions"
+      [responsiveOptions]="responsiveOptions2"
       [autoplayInterval]="6000"
     >
       <ng-template let-f pTemplate="item">
@@ -35,12 +35,7 @@
             >
               <h2 style="padding: 5px; padding-bottom: 0">{{ f.title }}</h2>
               <p
-                style="
-                  width: 800px;
-                  font-size: 12px;
-                  padding: 5px;
-                  padding-top: 0;
-                "
+                class="overview"
               >
                 {{ f.overview }}
               </p>
@@ -86,7 +81,7 @@
 
 <div>
   <h3 class="action">ACTION</h3>
-  <p-carousel [value]="action" [numVisible]="7" [circular]="true" [autoplayInterval]="9500" [showIndicators]="false">
+  <p-carousel [value]="action" [numVisible]="7" [circular]="true" [autoplayInterval]="9500" [showIndicators]="false" [responsiveOptions]="responsiveOptions">
     <ng-template let-action pTemplate="item">
         <div class="border-1 details surface-border border-round m-2 text-center py-5 px-3" style="height: 440px;" (click)="recuperaId(action)">
             <div class="mb-2">
