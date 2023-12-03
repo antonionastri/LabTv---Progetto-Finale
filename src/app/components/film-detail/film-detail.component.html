@@ -1,69 +1,84 @@
-
-
-<div
+<div class="sfondo"
   *ngIf="film"
   [style.background-image]="backgroundImageUrl"
   style="padding-top: 80px"
 >
+  <button
+    class="torna"
+    routerLink="/catalogo"
+    pButton
+    outlined="true"
+    label="< Torna al catalogo"
+  ></button>
 
-<button 
-routerLink="/catalogo"
-pButton
-outlined="true"
-label="< Torna al catalogo" 
-style="display: block; margin-top: 20px; font-size: 12px;padding:2px 3px; background-color: rgba(255, 255, 255, 0.575);border-color: transparent; font-style: italic;"
->
-</button>
+  <p-toast [position]="'top-center'"></p-toast>
 
-<p-toast [position]="'top-center'"></p-toast>
-
-<div style="position: absolute; bottom: 50px; height: fit-content;">
-  <img src="{{ 'https://image.tmdb.org/t/p/w500' + film.poster_path }}" />
-  <h1 class="front">{{ film.title }}</h1>
-  <h3 class="front">{{ film.release_date | pipe }}</h3>
-  <p class="front">{{ film.overview }}</p>
-  <h5 class="front">{{ film.genres[0].name }} - {{ film.genres[1].name }}</h5>
-  
-  <div
-    *ngIf="trailer && trailer[0].key"
-    style="width: fit-content; height: fit-content; padding: 0; display: inline-block; margin-right: 10px;"
-  >
+  <div style="position: absolute; bottom: 50px; height: fit-content">
+    <img src="{{ 'https://image.tmdb.org/t/p/w500' + film.poster_path }}" />
+    <h1 class="front">{{ film.title }}</h1>
+    <h3 class="front">{{ film.release_date | pipe }}</h3>
+    <p class="front">{{ film.overview }}</p>
+    <h5 class="front">{{ film.genres[0].name }} - {{ film.genres[1].name }}</h5>
 
     <div
-      class="card flex justify-content-center"
-      style="margin: 0 auto; height: fit-content; padding: 0;"
+      style="
+        width: fit-content;
+        height: fit-content;
+        padding: 0;
+        display: inline-block;
+        margin-right: 10px;
+      "
     >
-      <p-button
-        (click)="ButtonshowTrailer()"
-        icon="pi pi-youtube"
-        label="Trailer"
-      ></p-button>
-      <p-dialog
-        header="{{ film.title }} - Trailer"
-        [(visible)]="showTrailer"
-        [modal]="true"
-        [style]="{ width: 'fit-content' }"
-        [draggable]="false"
-        [resizable]="false"
+      <div
+        class="card flex justify-content-center"
+        style="margin: 0 auto; height: fit-content; padding: 0"
       >
-        <iframe
-          width="560"
-          height="315"
-          [src]="getVideo(trailer[0].key)"
-          frameborder="0"
-          allow="autoplay"
-          style="margin: 0 auto"
-          allowfullscreen
-        ></iframe>
-      </p-dialog>
+      <div *ngIf="trailer">
+        <p-button *ngIf="trailer && trailer.length > 0"
+          (click)="ButtonshowTrailer()"
+          icon="pi pi-youtube"
+          label="Trailer"
+        ></p-button>
+      </div>
+        <p-dialog
+          header="{{ film.title }} - Trailer"
+          [(visible)]="showTrailer"
+          [modal]="true"
+          [style]="{ width: 'fit-content' }"
+          [draggable]="false"
+          [resizable]="false"
+        >
+        <div *ngIf="trailer">
+          <iframe
+          *ngIf="trailer && trailer.length > 0 && trailer[0].key"
+            width="560"
+            height="315"
+            [src]="getVideo(trailer[0].key)"
+            frameborder="0"
+            allow="autoplay"
+            style="margin: 0 auto"
+            allowfullscreen
+          ></iframe>
+          </div>
+        </p-dialog>
+        <p-tag severity="danger"
+        *ngIf="!trailer || trailer.length === 0"
+        >Trailer non disponibile
+      </p-tag>
+      </div>
     </div>
-</div>
-<span *ngIf="!auth.getLoggedUser()" routerLink="/login" class="avviso">Login per poter acquistare</span>
-  <p-button
-        (click)="aggiungiFilm(film.title, film.id, film.backdrop_path, film.poster_path)"
-        icon="pi pi-shopping-cart"
-        label="Aggiungi al carrello"
-        severity="success"
-        [disabled]="button"
-  ></p-button>
+
+    <span *ngIf="!auth.getLoggedUser()" routerLink="/login" class="avviso"
+      >Login per poter acquistare</span
+    >
+    <p-button
+      (click)="
+        aggiungiFilm(film.title, film.id, film.backdrop_path, film.poster_path)
+      "
+      icon="pi pi-shopping-cart"
+      label="Aggiungi al carrello"
+      severity="success"
+      [disabled]="button"
+    ></p-button>
+  </div>
 </div>

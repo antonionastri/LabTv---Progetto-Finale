@@ -118,3 +118,9 @@ img{
         padding-top: 190px;
     }
 }
+
+@media all and (max-width: 524px) {
+    #page{
+        padding-top: 240px;
+    }
+}

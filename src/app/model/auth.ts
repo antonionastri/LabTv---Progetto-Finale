@@ -23,3 +23,13 @@ export interface LoggedUser {
     user: User;
     accessToken: string;
 }
+
+export class Contatti {
+  constructor(
+    public nome: string = "",
+    public email: string = "",
+    public telefono: string = "",
+    public messaggio: string = "",
+    public check: boolean = false
+  ) { }
+}

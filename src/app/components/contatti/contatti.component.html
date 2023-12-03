@@ -1,62 +1,121 @@
-<div class="contatti" style="z-index: -5;overflow: auto;">
-  <h1 style="margin-bottom: 50px;">Contatta LABFORTRAINING, la scuola di web a Roma.</h1>
+<div class="contatti" style="z-index: -5; overflow: auto">
+  <h1 style="margin-bottom: 50px">
+    Contatta LABFORTRAINING, la scuola di web a Roma.
+  </h1>
   <ul>
     <li>
-      <a href="mailto:info@labfortraining.it" class="mail"
+      <i class="pi pi-envelope"></i><a href="mailto:info@labfortraining.it" class="mail"
         >info@labfortraining.it</a
       >
     </li>
-    <li><a class="telefono" href="tel:06.58205135">06.58205135</a></li>
+    <li><i class="pi pi-phone"></i><a class="telefono" href="tel:06.58205135">06.58205135</a></li>
     <li>
-      <a href="https://wa.me/+393519392372" class="whatsapp" target="_blank"
+      <i class="pi pi-whatsapp"></i><a href="https://wa.me/+393519392372" class="whatsapp" target="_blank"
         >3519392372</a
       >
     </li>
   </ul>
-  <p style="margin: 50px 0;">
+  <p style="margin: 50px 0" class="contatti-p">
     La sede LABFORTRAINING è a Roma, in via Francesco Saverio Solari, 16. Gli
     uffici sono aperti dal Lunedì al Venerdì dalle 9:30 alle 18:30.
   </p>
   <iframe
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.5943355442537!2d12.456178537355466!3d41.86302351792502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f601da414ff73%3A0x50af1f8c10d58d13!2sLABFORTRAINING!5e0!3m2!1sit!2sus!4v1700751508133!5m2!1sit!2sus"
-    style="border: 0; float: left;"
+    style="border: 0; float: left"
     allowfullscreen=""
     loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"
     class="surface-card p-4 w-full lg:w-6"
   ></iframe>
 
-  <div class="surface-card p-4  w-full lg:w-6" style="float: left">
+  <div class="surface-card p-4 w-full lg:w-6" style="float: left">
     <div class="text-center mb-5">
-        <div class="text-900 text-3xl font-medium mb-3">Contattaci!
-        </div>
+      <div class="text-900 text-3xl font-medium mb-3">Contattaci!</div>
     </div>
-  
-    <form #laForm="ngForm">
+
+    <p-toast position="top-center"></p-toast>
+
+
+    <form #laForm="ngForm" (ngSubmit)="invio()">
       <label for="nome" class="block text-900 font-medium mb-2">Nome*</label>
-        <input id="nome" type="text" placeholder="Nome" pInputText class="w-full mb-3" required>
-  
-        <label for="email1" class="block text-900 font-medium mb-2">Email*</label>
-        <input id="email1" type="text" placeholder="Email" pInputText class="w-full mb-3" required>
-  
-        <label for="telefono" class="block text-900 font-medium mb-2">Telefono*</label>
-        <input id="telefono" type="text" placeholder="Telefono" pInputText class="w-full mb-3" required>
-  
-        <label for="text" class="block text-900 font-medium mb-2">Messaggio</label>
-        <input id="text" type="text" pInputText class="w-full mb-3" autocomplete="none" style="height: 120px;">
-  
-        <div class="flex align-items-center justify-content-between mb-6">
-            <div class="flex align-items-center">
-                <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
-                <label for="rememberme1" class="text-900"> Ho letto <a href="https://www.labfortraining.it/labfortraining-privacy" target="_blank">l'informativa sulla privacy</a> e accetto le condizioni</label>
-            </div>
+      <input
+        id="nome"
+        type="text"
+        placeholder="Nome"
+        pInputText
+        class="w-full mb-3"
+        name="nome"
+        [(ngModel)]="model.nome"
+      />
+
+      <label for="email" class="block text-900 font-medium mb-2">Email*</label>
+      <input
+        id="email"
+        type="text"
+        placeholder="Email"
+        pInputText
+        class="w-full mb-3"
+        name="email"
+        [(ngModel)]="model.email"
+      />
+
+      <label for="telefono" class="block text-900 font-medium mb-2"
+        >Telefono*</label
+      >
+      <input
+        id="telefono"
+        type="text"
+        placeholder="Telefono"
+        pInputText
+        class="w-full mb-3"
+        name="telefono"
+        [(ngModel)]="model.telefono"
+      />
+
+      <label for="messaggio" class="block text-900 font-medium mb-2"
+        >Messaggio</label
+      >
+      <input
+        id="messaggio"
+        type="text"
+        pInputText
+        class="w-full mb-3"
+        autocomplete="none"
+        style="height: 120px"
+        name="messaggio"
+        [(ngModel)]="model.messaggio"
+      />
+
+      <div class="flex align-items-center justify-content-between mb-6">
+        <div class="flex align-items-center">
+          <p-checkbox
+            id="check"
+            styleClass="mr-2"
+            [(ngModel)]="model.check"
+            name="check"
+            [value]="'true'"
+          ></p-checkbox>
+          <label for="check" class="text-900">
+            Ho letto
+            <a
+              href="https://www.labfortraining.it/labfortraining-privacy"
+              target="_blank"
+              >l'informativa sulla privacy</a
+            >
+            e accetto le condizioni</label
+          >
         </div>
-  
-  
-        <button pButton type="submit" label="Invia" icon="pi pi-user" class="w-full" [disabled]="!laForm.form.valid"
-        ></button>
+      </div>
+
+      <button
+        pButton
+        pRipple
+        type="submit"
+        label="Invia"
+        icon="pi pi-user"
+        class="w-full"
+        [disabled]="!laForm.form.valid || !model.check"
+      ></button>
     </form>
   </div>
-
 </div>
-

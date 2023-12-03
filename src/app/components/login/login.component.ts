@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit{
   constructor (private authService: AuthService, private router: Router, private carrello:CarrelloService){}
 
   ngOnInit(): void {
-    this.messages = [{ severity: 'success', summary: 'Success', detail: 'Message Content' }];
   }
 
   login(){

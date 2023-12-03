@@ -1,5 +1,5 @@
 <body [ngClass]="{'no-scroll': !authservice.getLoggedUser()}">
-<div style="padding-top: 100px; z-index: -5" >
+<div class="top">
   <div class="containers">
     <br />
     <div *ngFor="let f of risultati" class="card flex" (click)="recuperaId(f)">

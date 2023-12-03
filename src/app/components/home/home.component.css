@@ -2,6 +2,11 @@
     overflow-y: hidden;
 }
 
+.top{
+    padding-top: 100px; 
+    z-index: -5
+}
+
 #card{
     border: 1px solid grey;
     border-radius: 5px;
@@ -54,4 +59,23 @@
     height: 150px;
     position: fixed;
     bottom: 0;
+}
+
+
+@media all and (max-width: 644px) {
+    .top{
+        padding-top: 140px;
+    }
+}
+
+@media all and (max-width: 559px) {
+    .top{
+        padding-top: 180px;
+    }
+}
+
+@media all and (max-width: 523px) {
+    .top{
+        padding-top: 220px;
+    }
 }

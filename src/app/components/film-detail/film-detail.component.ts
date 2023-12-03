@@ -21,7 +21,7 @@ export class FilmDetailComponent implements OnInit{
 
   backgroundImageUrl: string = ''
 
-  trailer: ResultVideo[]=[]
+  trailer!: ResultVideo[]
 
   showTrailer: boolean = false;
 

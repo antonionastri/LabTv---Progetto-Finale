@@ -1,7 +1,7 @@
 .contatti{
     max-width: 1300px;
     margin: 0 auto;
-    padding-top: 90px;
+    padding: 90px 15px 15px 10px;
 }
 
 .contatti ul{
@@ -15,4 +15,26 @@ a{
 iframe{
     width: 600px;
     height: 690px;
+}
+
+.pi{
+    margin-right: 6px;
+}
+
+@media all and (max-width: 645px) {
+    .contatti{
+        padding-top: 130px;
+    }
+}
+
+@media all and (max-width: 560px) {
+    .contatti{
+        padding-top: 170px;
+    }
+}
+
+@media all and (max-width: 523px) {
+    .contatti{
+        padding-top: 200px;
+    }
 }
