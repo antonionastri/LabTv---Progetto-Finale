@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Cast, Detail, ResultVideo, Root2, RootCast } from 'src/app/model/film-detail';
+import { ResultVideo, Root2, RootCast } from 'src/app/model/film-detail';
 import { FilmService } from 'src/app/services/film.service';
 import { CarrelloService } from 'src/app/services/carrello.service';
 import { Carrello, CarrelloDTO } from 'src/app/model/carrello';
