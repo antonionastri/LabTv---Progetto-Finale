@@ -19,6 +19,7 @@ iframe{
 
 .pi{
     margin-right: 6px;
+    color: white;
 }
 
 @media all and (max-width: 645px) {
