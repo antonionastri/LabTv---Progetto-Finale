@@ -20,6 +20,20 @@
     <p class="front">{{ film.overview }}</p>
     <h5 class="front">{{ film.genres[0].name }} - {{ film.genres[1].name }}</h5>
 
+<div *ngIf="cast" style="margin-bottom: 5px;">
+    <p-button (click)="showDialog()" icon="pi pi-external-link" label="Cast e Crew" size="small" severity="warning"></p-button>
+    <p-dialog header="Cast" [(visible)]="visible" [style]="{width: '50vw'}" [draggable]="false" style="font-weight: 300;">
+        <h2>Attori</h2>
+      <p *ngFor="let a of cast.cast">
+          <span style="font-weight: bold;">{{a.name}}</span> - {{a.character}}
+      </p>
+      <h2>Crew</h2>
+      <p *ngFor=" let c of cast.crew">
+        {{c.name}} - {{c.job}}
+      </p>
+    </p-dialog>
+</div>
+
     <div
       style="
         width: fit-content;

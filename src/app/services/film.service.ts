@@ -75,4 +75,9 @@ export class FilmService {
     const word = this.baseUrl + page;
     return this.http.get<Root>(word, this.HttpOptions);
   }
+
+  getCast(id:any){
+    const url = `https://api.themoviedb.org/3/movie/${id}/credits`
+    return this.http.get<any>(url, this.HttpOptions)
+  }
 }

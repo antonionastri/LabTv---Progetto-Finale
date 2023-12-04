@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Detail, ResultVideo, Root2 } from 'src/app/model/film-detail';
+import { Cast, Detail, ResultVideo, Root2, RootCast } from 'src/app/model/film-detail';
 import { FilmService } from 'src/app/services/film.service';
 import { CarrelloService } from 'src/app/services/carrello.service';
 import { Carrello, CarrelloDTO } from 'src/app/model/carrello';
@@ -29,7 +29,15 @@ export class FilmDetailComponent implements OnInit{
 
   button = false
 
+  visible: boolean = false;
+
+  cast?: RootCast
+
   constructor(private route: ActivatedRoute, private fs: FilmService, private sanitizer: DomSanitizer, public carrello:CarrelloService, public auth:AuthService,private messageService: MessageService){}
+
+  showDialog() {
+    this.visible = true;
+}
 
   showSuccess() {
     this.messageService.add({ severity: 'warn', summary: 'Attenzione', detail: 'Film già presente nel carrello' });
@@ -47,6 +55,7 @@ export class FilmDetailComponent implements OnInit{
           this.film = dati;
           this.backgroundImageUrl = `url(https://image.tmdb.org/t/p/original${this.film.backdrop_path})`;
         }); 
+        this.getCastFilm(id)
     }
     });
     
@@ -71,7 +80,12 @@ export class FilmDetailComponent implements OnInit{
     this.fs.getTrailer(id).subscribe(dati => {
       this.trailer = dati;
     });
-    
+  }
+
+  getCastFilm(id:number){
+    this.fs.getCast(id).subscribe(dati =>{
+      this.cast = dati
+    })
   }
 
   ButtonshowTrailer(){
