@@ -22,7 +22,7 @@
 
 <div *ngIf="cast" style="margin-bottom: 5px;">
     <p-button (click)="showDialog()" icon="pi pi-external-link" label="Cast e Crew" size="small" severity="warning"></p-button>
-    <p-dialog header="Cast" [(visible)]="visible" [style]="{width: '30vw'}" [draggable]="false" [modal]="true">
+    <p-dialog header="Cast" [(visible)]="visible" [style]="{width: '30vw'}" [draggable]="false" [modal]="true" [dismissableMask]="true">
         <h2>Attori</h2>
       <p *ngFor="let a of cast.cast">
           <span style="font-weight: bold;">{{a.name}}</span> - {{a.character}}
@@ -61,6 +61,7 @@
           [style]="{ width: 'fit-content' }"
           [draggable]="false"
           [resizable]="false"
+          [dismissableMask]="true"
         >
         <div *ngIf="trailer">
           <iframe
