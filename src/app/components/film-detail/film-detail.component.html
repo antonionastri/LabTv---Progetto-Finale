@@ -23,12 +23,12 @@
 <div *ngIf="cast" style="margin-bottom: 5px;">
     <p-button (click)="showDialog()" icon="pi pi-external-link" label="Cast e Crew" size="small" severity="warning"></p-button>
     <p-dialog header="Cast" [(visible)]="visible" [style]="{width: '30vw'}" [draggable]="false" [modal]="true" [dismissableMask]="true">
-        <h2>Attori</h2>
-      <p *ngFor="let a of cast.cast">
+        <h2 class="color">Attori</h2>
+      <p *ngFor="let a of cast.cast" class="color">
           <span style="font-weight: bold;">{{a.name}}</span> - {{a.character}}
       </p>
-      <h2>Crew</h2>
-      <p *ngFor=" let c of cast.crew">
+      <h2 class="color">Crew</h2>
+      <p *ngFor=" let c of cast.crew"  class="color">
         {{c.name}} - {{c.job}}
       </p>
     </p-dialog>
